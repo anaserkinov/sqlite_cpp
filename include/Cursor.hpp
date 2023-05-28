@@ -3,9 +3,9 @@
 
 #include <memory>
 
-#include "NativeByteBuffer.h"
+#include "core/NativeByteBuffer.h"
 #include "SQLiteCursor.hpp"
-#include "using/types.hpp"
+#include "core/types.hpp"
 
 class PreparedStatement;
 

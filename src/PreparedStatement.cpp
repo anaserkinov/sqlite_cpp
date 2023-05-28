@@ -4,7 +4,7 @@
 #include <memory>
 
 #include "Cursor.hpp"
-#include "FileLog.h"
+#include "core/FileLog.h"
 
 #include "Cursor.hpp"
 #include "Database.hpp"

@@ -9,7 +9,7 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include <time.h>
-#include "FileLog.h"
+#include "core/FileLog.h"
 
 #ifdef ANDROID
 #include <android/log.h>

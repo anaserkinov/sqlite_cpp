@@ -4,7 +4,7 @@
 #include <sstream>
 #include <stdexcept>
 
-#include "FileLog.h"
+#include "core/FileLog.h"
 #include "SQLite/sqlite3.h"
 
 #include "Cursor.hpp"

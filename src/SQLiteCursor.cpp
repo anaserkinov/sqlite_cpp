@@ -5,8 +5,8 @@
 
 #include "SQLite/sqlite3.h"
 
-#include "BuffersStorage.h"
-#include "NativeByteBuffer.h"
+#include "core/BuffersStorage.h"
+#include "core/NativeByteBuffer.h"
 
 int SQLiteCursor::columnCount(const long& statementHandle) {
     sqlite3_stmt *handle = (sqlite3_stmt *)statementHandle;

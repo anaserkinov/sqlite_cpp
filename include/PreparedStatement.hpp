@@ -2,12 +2,12 @@
 #define PREPAREDSTATEMENT_HPP
 
 #include <chrono>
-#include "using/types.hpp"
-#include "using/collection.hpp"
-#include "using/object.hpp"
-#include "using/database.hpp"
+#include "core/types.hpp"
+#include "core/collection.hpp"
+#include "core/object.hpp"
+#include "core/database.hpp"
 
-#include "NativeByteBuffer.h"
+#include "core/NativeByteBuffer.h"
 #include "SQLitePreparedStatement.hpp"
 
 class Cursor;

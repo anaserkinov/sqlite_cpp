@@ -8,10 +8,10 @@
 
 #include <memory.h>
 #include <stdlib.h>
-#include "NativeByteBuffer.h"
-#include "FileLog.h"
-#include "ByteArray.h"
-#include "BuffersStorage.h"
+#include "core/NativeByteBuffer.h"
+#include "core/FileLog.h"
+#include "core/ByteArray.h"
+#include "core/BuffersStorage.h"
 
 NativeByteBuffer::NativeByteBuffer(uint32_t size) {
 #ifdef ANDROID

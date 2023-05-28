@@ -6,9 +6,9 @@
  * Copyright Nikolai Kudashov, 2015-2018.
  */
 
-#include "BuffersStorage.h"
-#include "FileLog.h"
-#include "NativeByteBuffer.h"
+#include "core/BuffersStorage.h"
+#include "core/FileLog.h"
+#include "core/NativeByteBuffer.h"
 
 BuffersStorage &BuffersStorage::getInstance() {
     static BuffersStorage instance(true);

@@ -8,8 +8,8 @@
 
 #include <stdlib.h>
 #include <memory.h>
-#include "ByteArray.h"
-#include "FileLog.h"
+#include "core/ByteArray.h"
+#include "core/FileLog.h"
 
 ByteArray::ByteArray() {
     bytes = nullptr;

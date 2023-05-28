@@ -1,6 +1,6 @@
-#include "Base.hpp"
+#include "core/Base.hpp"
 
-Bool *Bool::BTdeserialize(NativeByteBuffer *stream, uint32_t constructor, bool &error) {
+Bool *Bool::TgDeserialize(NativeByteBuffer *stream, uint32_t constructor, bool &error) {
     Bool *result = nullptr;
     switch (constructor) {
         case 0x186a1:

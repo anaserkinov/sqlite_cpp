@@ -6,20 +6,20 @@
  * Copyright Nikolai Kudashov, 2015-2018.
  */
 
-#ifndef BTOBJECT_H
-#define BTOBJECT_H
+#ifndef TG_OBJECT_H
+#define TG_OBJECT_H
 
 #include <stdint.h>
 
 class NativeByteBuffer;
 
-class BTObject {
+class TgObject {
 
 public:
-    virtual ~BTObject();
+    virtual ~TgObject();
     virtual void readParams(NativeByteBuffer *stream, bool &error);
     virtual void serializeToStream(NativeByteBuffer *stream);
-    virtual BTObject *deserializeResponse(NativeByteBuffer *stream, uint32_t constructor, bool &error);
+    virtual TgObject *deserializeResponse(NativeByteBuffer *stream, uint32_t constructor, bool &error);
     uint32_t getObjectSize();
 
     virtual bool isNeedLayer();

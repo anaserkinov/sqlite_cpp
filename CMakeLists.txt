@@ -24,5 +24,9 @@ ${SOURCE_DIR}/Database.cpp
 ${SOURCE_DIR}/core/Base.cpp
 )
 
+include_directories(
+    "include"
+)
+
 target_compile_options(sqlite_cpp PUBLIC -fno-strict-aliasing -Os)
 

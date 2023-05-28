@@ -6,7 +6,7 @@
 #include <sstream>
 #include <stdexcept>
 
-#include "FileLog.h"
+#include "core/FileLog.h"
 #include "PreparedStatement.hpp"
 #include "SQLite/sqlite3.h"
 

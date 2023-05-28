@@ -6,33 +6,33 @@
  * Copyright Nikolai Kudashov, 2015-2018.
  */
 
-#include "TgObject.h"
-#include "NativeByteBuffer.h"
+#include "core/TgObject.h"
+#include "core/NativeByteBuffer.h"
 
 thread_local NativeByteBuffer *sizeCalculatorBuffer = new NativeByteBuffer(true);
 
-BTObject::~BTObject() {
+TgObject::~TgObject() {
 
 }
 
-void BTObject::readParams(NativeByteBuffer *stream, bool &error) {
+void TgObject::readParams(NativeByteBuffer *stream, bool &error) {
 
 }
 
-void BTObject::serializeToStream(NativeByteBuffer *stream) {
+void TgObject::serializeToStream(NativeByteBuffer *stream) {
 
 }
 
-BTObject *BTObject::deserializeResponse(NativeByteBuffer *stream, uint32_t constructor, bool &error) {
+TgObject *TgObject::deserializeResponse(NativeByteBuffer *stream, uint32_t constructor, bool &error) {
     return nullptr;
 }
 
-uint32_t BTObject::getObjectSize() {
+uint32_t TgObject::getObjectSize() {
     sizeCalculatorBuffer->clearCapacity();
     serializeToStream(sizeCalculatorBuffer);
     return sizeCalculatorBuffer->capacity();
 }
 
-bool BTObject::isNeedLayer() {
+bool TgObject::isNeedLayer() {
     return false;
 }
