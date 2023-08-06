@@ -27,15 +27,14 @@ bool Database::tableExists(String tableName) {
     return executeInt(s, args).has_value();
 }
 
-std::unique_ptr<PreparedStatement> Database::executeFast(const String& sql) {
-    return std::make_unique<PreparedStatement>(*this, sql);
+PreparedStatementPtr Database::executeFast(const String& sql) {
+    return std::make_shared<PreparedStatement>(*this, sql);
 }
 
 Int Database::executeInt(const String& sql, List<Object>& args) {
     checkOpened();
-    std::unique_ptr<Cursor> _c = PreparedStatement(*this, sql).query(args);
-    CursorWrapper cursorWrapper(_c.get());
-    Cursor* cursor = cursorWrapper.cursor;
+    CursorPtr cursor = PreparedStatement(*this, sql).query(args);
+    CursorWrapper cursorWrapper(cursor);
     try {
         if (!cursor->next()) {
             return Int();
@@ -50,7 +49,7 @@ void Database::explainQuery(const String& sql, List<Object>& args) {
     checkOpened();
     const String query = "EXPLAIN QUERY PLAN " + sql;
     PreparedStatement preparedStatement(*this, query);
-    std::unique_ptr<Cursor> cursor = preparedStatement.query(args);
+    CursorPtr cursor = preparedStatement.query(args);
     while (cursor->next()) {
         int count = cursor->getColumnCount();
         std::stringstream builder;
@@ -64,9 +63,9 @@ void Database::explainQuery(const String& sql, List<Object>& args) {
 }
 
 
-std::unique_ptr<Cursor> Database::queryFinalized(String sql, List<Object>& args) {
+CursorPtr Database::queryFinalized(String sql, List<Object>& args) {
     checkOpened();
-    std::shared_ptr<PreparedStatement> ps = std::make_shared<PreparedStatement>(*this, sql);
+    PreparedStatementPtr ps = std::make_shared<PreparedStatement>(*this, sql);
     return ps->query(args);
 }
 

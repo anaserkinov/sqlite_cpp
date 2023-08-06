@@ -34,12 +34,12 @@ public:
     void dispose();
     void checkFinalized();
     void finalizeQuery();
-    void bindInt(int index, int value);
+    void bindInt32(int index, int32_t value);
     void bindDouble(int index, double value);
     void bindByteArray(int index, uint8_t* value, int length);
     void bindByteBuffer(int index, NativeByteBuffer& value);
     void bindString(int index, const String& value);
-    void bindLong(int index, long value);
+    void bindInt64(int index, int64_t value);
     void bindNull(int index);
 };
 

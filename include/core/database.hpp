@@ -2,5 +2,5 @@
 #include "PreparedStatement.hpp"
 #include "Cursor.hpp"
 
-using PreparedStatementPtr = std::unique_ptr<PreparedStatement>;
-using CursorPtr = std::unique_ptr<Cursor>;
+using PreparedStatementPtr = std::shared_ptr<PreparedStatement>;
+using CursorPtr = std::shared_ptr<Cursor>;

@@ -19,9 +19,9 @@ public:
 
     void sqlBindString(const long& statementHandle, int index, const std::string& value);
 
-    void sqlBindInt(const long& statementHandle, int index, int value);
+    void sqlBindInt32(const long& statementHandle, int index, int32_t value);
 
-    void sqlBindLong(const long& statementHandle, int index, long value);
+    void sqlBindInt64(const long& statementHandle, int index, int64_t value);
 
     void sqlBindDouble(const long& statementHandle, int index, double value);
 

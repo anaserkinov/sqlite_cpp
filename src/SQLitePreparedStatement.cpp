@@ -67,8 +67,8 @@ void SQLitePreparedStatement::sqlBindString(const long& statementHandle, int ind
     }
 }
 
-void SQLitePreparedStatement::sqlBindInt(const long& statementHandle, int index,
-                                      int value) {
+void SQLitePreparedStatement::sqlBindInt32(const long& statementHandle, int index,
+                                      int32_t value) {
     sqlite3_stmt *handle = (sqlite3_stmt *)statementHandle;
 
     int errcode = sqlite3_bind_int(handle, index, value);
@@ -77,8 +77,8 @@ void SQLitePreparedStatement::sqlBindInt(const long& statementHandle, int index,
     }
 }
 
-void SQLitePreparedStatement::sqlBindLong(const long& statementHandle, int index,
-                                       long value) {
+void SQLitePreparedStatement::sqlBindInt64(const long& statementHandle, int index,
+                                       int64_t value) {
     sqlite3_stmt *handle = (sqlite3_stmt *)statementHandle;
 
     int errcode = sqlite3_bind_int64(handle, index, value);

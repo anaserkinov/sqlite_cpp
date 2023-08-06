@@ -19,7 +19,7 @@ PreparedStatement::PreparedStatement(Database& db, const String& sql): SQLitePre
     }
 }
 
-std::unique_ptr<Cursor> PreparedStatement::query(const List<Object>& args) {
+CursorPtr PreparedStatement::query(const List<Object>& args) {
     checkFinalized();
 
     sqlReset(sqliteStatementHandle);
@@ -30,19 +30,19 @@ std::unique_ptr<Cursor> PreparedStatement::query(const List<Object>& args) {
         if (std::holds_alternative<std::monostate>(arg)) {
             sqlBindNull(sqliteStatementHandle, i);
         } else if (std::holds_alternative<int>(arg)) {
-            sqlBindInt(sqliteStatementHandle, i, std::get<int>(arg));
+            sqlBindInt32(sqliteStatementHandle, i, std::get<int>(arg));
         } else if (std::holds_alternative<double>(arg)) {
             sqlBindDouble(sqliteStatementHandle, i, std::get<double>(arg));
         } else if (std::holds_alternative<String>(arg)) {
             sqlBindString(sqliteStatementHandle, i, std::get<String>(arg));
         } else if (std::holds_alternative<long>(arg)) {
-            sqlBindLong(sqliteStatementHandle, i, std::get<long>(arg));
+            sqlBindInt64(sqliteStatementHandle, i, std::get<long>(arg));
         } else {
             throw std::runtime_error("Unknown type to bind");
         }
         i++;
     }
-    return std::make_unique<Cursor>(this);
+    return std::make_shared<Cursor>(this);
 }
 
 int PreparedStatement::step() {
@@ -87,8 +87,8 @@ void PreparedStatement::finalizeQuery() {
     }
 }
 
-void PreparedStatement::bindInt(int index, int value) {
-    sqlBindInt(sqliteStatementHandle, index, value);
+void PreparedStatement::bindInt32(int index, int32_t value) {
+    sqlBindInt32(sqliteStatementHandle, index, value);
 }
 
 void PreparedStatement::bindDouble(int index, double value) {
@@ -107,8 +107,8 @@ void PreparedStatement::bindString(int index, const String& value) {
     sqlBindString(sqliteStatementHandle, index, value);
 }
 
-void PreparedStatement::bindLong(int index, long value) {
-    sqlBindLong(sqliteStatementHandle, index, value);
+void PreparedStatement::bindInt64(int index, int64_t value) {
+    sqlBindInt64(sqliteStatementHandle, index, value);
 }
 
 void PreparedStatement::bindNull(int index) {

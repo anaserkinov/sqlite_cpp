@@ -3,8 +3,8 @@
 
 #include <memory>
 
-#include "core/NativeByteBuffer.h"
 #include "SQLiteCursor.hpp"
+#include "core/NativeByteBuffer.h"
 #include "core/types.hpp"
 
 class PreparedStatement;
@@ -39,12 +39,13 @@ public:
 
 class CursorWrapper {
 public:
-    Cursor* cursor;
-    CursorWrapper(Cursor* cursor)
+    std::shared_ptr<Cursor> cursor;
+    CursorWrapper(std::shared_ptr<Cursor> cursor)
         : cursor(cursor) {
     }
     ~CursorWrapper() {
-        if (cursor) cursor->dispose();
+        if (cursor)
+            cursor->dispose();
     }
 };
 
