@@ -21,6 +21,23 @@ int SQLitePreparedStatement::sqlStep(const long& statementHandle) {
     return 0;
 };
 
+int SQLitePreparedStatement::sqlStep(const long& sqliteHandle, const long& statementHandle) {
+    sqlite3_stmt *handle = (sqlite3_stmt *)statementHandle;
+
+    int errcode = sqlite3_step(handle);
+    if (errcode == SQLITE_ROW) {
+        return sqlite3_last_insert_rowid((sqlite3 *)sqliteHandle);
+    } else if (errcode == SQLITE_DONE) {
+        return sqlite3_last_insert_rowid((sqlite3 *)sqliteHandle);
+    } else if (errcode == SQLITE_BUSY) {
+        return -1;
+    }
+
+    throw std::runtime_error(sqlite3_errmsg(sqlite3_db_handle(handle)));
+
+    return 0;
+};
+
 long SQLitePreparedStatement::sqlPrepare(const long& sqliteHandle, const std::string& sql) {
     sqlite3 *handle = (sqlite3 *)sqliteHandle;
 

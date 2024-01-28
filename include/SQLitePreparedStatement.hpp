@@ -8,6 +8,7 @@
 class SQLitePreparedStatement {
 public:
     int sqlStep(const long& statementHandle);
+    int sqlStep(const long& sqliteHandle, const long& statementHandle);
 
     long sqlPrepare(const long& statementHandle, const std::string& sql);
 

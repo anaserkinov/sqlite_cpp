@@ -19,7 +19,7 @@ class Database : public SQLiteDatabase {
     bool inTransaction = false;
 
 public:
-    long& getSQLiteHandle();
+    const long& getSQLiteHandle() const;
     Database(String fileName);
     bool tableExists(String tableName);
     PreparedStatementPtr executeFast(const String& sql);

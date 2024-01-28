@@ -2,13 +2,13 @@
 #define PREPAREDSTATEMENT_HPP
 
 #include <chrono>
-#include "core/types.hpp"
-#include "core/collection.hpp"
-#include "core/object.hpp"
-#include "core/database.hpp"
 
-#include "core/NativeByteBuffer.h"
 #include "SQLitePreparedStatement.hpp"
+#include "core/NativeByteBuffer.h"
+#include "core/collection.hpp"
+#include "core/database.hpp"
+#include "core/object.hpp"
+#include "core/types.hpp"
 
 class Cursor;
 class Database;
@@ -20,15 +20,16 @@ class PreparedStatement : public SQLitePreparedStatement {
         return millis;
     }
 
-public:
+   public:
     bool isFinalized = false;
     long sqliteStatementHandle;
     int64_t startTime;
     String mQuery;
 
-    PreparedStatement(Database& db, const String& sql);
+    PreparedStatement(const Database& db, const String& sql);
     CursorPtr query(const List<Object>& args);
     int step();
+    int64_t step(const Database& db);
     PreparedStatement& stepThis();
     void requery();
     void dispose();

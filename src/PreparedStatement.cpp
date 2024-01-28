@@ -11,7 +11,7 @@
 
 #include <iostream>
 
-PreparedStatement::PreparedStatement(Database& db, const String& sql): SQLitePreparedStatement() {
+PreparedStatement::PreparedStatement(const Database& db, const String& sql): SQLitePreparedStatement() {
     sqliteStatementHandle = sqlPrepare(db.getSQLiteHandle(), sql);
     if (LOGS_ENABLED) {
         mQuery = sql;
@@ -47,6 +47,10 @@ CursorPtr PreparedStatement::query(const List<Object>& args) {
 
 int PreparedStatement::step() {
     return sqlStep(sqliteStatementHandle);
+}
+
+int64_t PreparedStatement::step(const Database& db) {
+    return sqlStep(db.getSQLiteHandle(), sqliteStatementHandle);
 }
 
 PreparedStatement& PreparedStatement::stepThis() {

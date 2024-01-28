@@ -13,7 +13,7 @@ class Cursor : public SQLiteCursor {
     bool inRow = false;
     PreparedStatement* preparedStatement = nullptr;
 
-public:
+   public:
     const int FIELD_TYPE_INT = 1;
     const int FIELD_TYPE_FLOAT = 2;
     const int FIELD_TYPE_STRING = 3;
@@ -38,14 +38,14 @@ public:
 };
 
 class CursorWrapper {
-public:
-    std::shared_ptr<Cursor> cursor;
+   public:
+    std::shared_ptr<Cursor> ptr;
     CursorWrapper(std::shared_ptr<Cursor> cursor)
-        : cursor(cursor) {
+        : ptr(cursor) {
     }
     ~CursorWrapper() {
-        if (cursor)
-            cursor->dispose();
+        if (ptr)
+            ptr->dispose();
     }
 };
 

@@ -10,7 +10,7 @@
 #include "Cursor.hpp"
 #include "PreparedStatement.hpp"
 
-long& Database::getSQLiteHandle() {
+const long& Database::getSQLiteHandle() const{
     return sqliteHandle;
 }
 
