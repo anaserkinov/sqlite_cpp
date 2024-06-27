@@ -58,7 +58,7 @@ std::string SQLiteCursor::columnStringValue(const long& statementHandle,
     if (str != 0) {
         return std::string(str);
     }
-    return 0;
+    return "";
 }
 
 std::byte *SQLiteCursor::columnByteArrayValue(const long& statementHandle,
@@ -71,7 +71,7 @@ std::byte *SQLiteCursor::columnByteArrayValue(const long& statementHandle,
         std::memcpy(result, buf, length);
         return result;
     }
-    return nullptr;
+    return 0;
 }
 
 long SQLiteCursor::columnByteBufferValue(const long& statementHandle, int columnIndex) {
